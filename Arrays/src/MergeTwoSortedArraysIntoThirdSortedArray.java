@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class MergeTwoSortedArraysIntoThirdSortedArray {
 
     /*
-    *
+    * https://www.youtube.com/watch?v=xF3TU-QlhJQ&list=PLeIMaH7i8JDjd21ZF6jlRKtChLttls7BG&index=25
     * Logic: traverse through both the arrays at same time, compare the values which ever value is lesser put into new resultant array.
     * for remaining elements traverse through remaining elements and copy to resultant array.
     *
