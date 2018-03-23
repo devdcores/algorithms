@@ -22,6 +22,10 @@ public class FindNthNodeFromEndOfTheLinkedList {
         System.out.println("Result Optimized : " + nthFromEndOfLinkedList);
 
         System.out.println("Result Regular : " + nthNodeFromEnd.findNthFromEndOfLinkedListRegular(2));
+
+        System.out.println("Result Using Recursion : " + nthNodeFromEnd.findNthFromEndOfLinkedListUsingRecursion(headNode, 2));
+
+
     }
 }
 
@@ -68,6 +72,7 @@ class NthNodeFromEnd {
         return pNthNode;
     }
 
+    // Not so optimized solution, time : o(2n) ~ o(n), space : 0(1)
     public Node findNthFromEndOfLinkedListRegular(int position) {
 
         int found = this.size() - position + 1;
@@ -89,6 +94,21 @@ class NthNodeFromEnd {
         while (tempNode != null) {
             result++;
             tempNode = tempNode.next;
+        }
+        return result;
+    }
+
+    int counter = 0;
+
+    //Using recursion
+    public Node findNthFromEndOfLinkedListUsingRecursion(Node headNode, int position) {
+        Node result = null;
+        if (headNode != null) {
+            result = findNthFromEndOfLinkedListUsingRecursion(headNode.next, position);
+            counter++;
+            if (counter == position) {
+                result = headNode;
+            }
         }
         return result;
     }
