@@ -10,6 +10,10 @@ public class LinkedList {
         this.head = null;
     }
 
+    LinkedList(Node head) {
+        this.head = head;
+    }
+
     public void insertAtHead(int data) {
         Node node = new Node(data);
         if (head == null) {
