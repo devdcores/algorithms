@@ -1,10 +1,11 @@
 package LinkedList;
 
 /**
- * Created by Devaraj Reddy, 3/23/2018 - 10:11 PM
+ * Created by Devaraj Reddy, 3/23/2018 - 10:54 PM
  */
-public class InsertNodeInSortedLinkedList {
+public class ReverseLinkedListMain {
     public static void main(String[] args) {
+
 
         Node headNode = new Node(123);
         Node node1 = new Node(234);
@@ -30,53 +31,43 @@ public class InsertNodeInSortedLinkedList {
         Node node9 = new Node(4444);
         node8.next = node9;
 
-        SortedLinkedList sortedLinkedList = new SortedLinkedList(headNode);
+        ReverseLinkedList reverseLinkedList = new ReverseLinkedList(headNode);
 
-        sortedLinkedList.display();
-        sortedLinkedList.insertElement(888);
-        sortedLinkedList.display();
+        System.out.println("Linked List Before ");
+        reverseLinkedList.display(headNode);
+
+        System.out.println("Linked List After ");
+        reverseLinkedList.display(reverseLinkedList.reverseList());
     }
 }
 
-class SortedLinkedList {
+// 111 --> 222 --> 333
+class ReverseLinkedList {
     Node head;
 
-    SortedLinkedList(Node head) {
+    ReverseLinkedList(Node head) {
         this.head = head;
     }
 
-    public void insertElement(int data) {
-        Node newNode = new Node(data);
-        if (head == null) {
-            head = newNode;
-        }
+
+    public Node reverseList() {
 
         Node tempNode = head;
-        Node previousNode = null;
-        while (tempNode != null) {
+        Node previous = null;
 
-            if (tempNode.data > newNode.data) {
-                break;
-            }
-            previousNode = tempNode;
-            tempNode = tempNode.next;
+        while(tempNode!=null){
+            Node nextNode = tempNode.next;
+            tempNode.next=previous;
+            previous=tempNode;
+            tempNode=nextNode;
         }
-
-        if (previousNode == null) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node nextNode = previousNode.next;
-            previousNode.next = newNode;
-            newNode.next = nextNode;
-        }
-
+        return previous;
     }
 
-    public void display() {
+    public void display(Node head) {
         System.out.println("***********************  Start Display  ********************************");
         System.out.println("");
-        Node node = this.head;
+        Node node = head;
         while (node != null) {
             System.out.print("" + node.data);
             if (node.next != null)
@@ -89,6 +80,7 @@ class SortedLinkedList {
         System.out.println("");
         System.out.println("***********************  End Display  **********************************");
         System.out.println("########################################################################");
-
     }
+
+
 }
