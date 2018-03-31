@@ -7,12 +7,12 @@ public class CheckWeatherGivenTreeIsBinarySearchTree {
     public static void main(String[] args) {
 
 
-        TreeNode rootNode = new TreeNode(4);
+        TreeNode firstNode = new TreeNode(1);
         TreeNode secondNode = new TreeNode(2);
-        TreeNode thirdNode = new TreeNode(6);
-        TreeNode fourthNode = new TreeNode(1);
-        TreeNode fifthNode = new TreeNode(3);
-        TreeNode sixthNode = new TreeNode(2);
+        TreeNode thirdNode = new TreeNode(3);
+        TreeNode rootNode = new TreeNode(4);
+        TreeNode fifthNode = new TreeNode(5);
+        TreeNode sixthNode = new TreeNode(6);
         TreeNode seventhNode = new TreeNode(7);
 
 
@@ -21,21 +21,21 @@ public class CheckWeatherGivenTreeIsBinarySearchTree {
          *            2   6
          * */
         rootNode.left = secondNode;
-        rootNode.right = thirdNode;
+        rootNode.right = sixthNode;
 
         /*              2
          *             / \
          *            1   3
          * */
-        secondNode.left = fourthNode;
-        secondNode.right = fifthNode;
+        secondNode.left = firstNode;
+        secondNode.right = thirdNode;
 
         /*              6
          *             / \
          *            5   7
          * */
-        thirdNode.left = sixthNode;
-        thirdNode.right = seventhNode;
+        sixthNode.left = fifthNode;
+        sixthNode.right = seventhNode;
 
         /* Final tree from root
          *
