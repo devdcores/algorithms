@@ -1,7 +1,5 @@
 package Trees;
 
-import javax.xml.soap.Node;
-
 /**
  * Created by Devaraj Reddy, 3/29/2018 - 11:10 PM
  */
@@ -38,34 +36,21 @@ public class BSTree {
         return rootTreeNode;
     }
 
-    public void inOrderTraversal(){
-        inOrder(rootTreeNode);
-    }
-
-    private void inOrder(TreeNode rootTreeNode) {
-        if(rootTreeNode!=null){
-            inOrder(rootTreeNode.left);
-            System.out.println("data : "+rootTreeNode.data);
-            inOrder(rootTreeNode.right);
-        }
-    }
-
-
     public TreeNode search(int data) {
-       return searchNode(rootTreeNode,data);
+        return searchNode(rootTreeNode, data);
     }
 
     private TreeNode searchNode(TreeNode rootNode, int data) {
-        if(rootNode==null){
+        if (rootNode == null) {
             return null;
         }
-        if(rootNode.data==data){
+        if (rootNode.data == data) {
             return rootNode;
         }
-        if(data<rootNode.data) {
+        if (data < rootNode.data) {
             return searchNode(rootNode.left, data);
         }
-        return searchNode(rootNode.right,data);
+        return searchNode(rootNode.right, data);
     }
 
     public TreeNode findMinimumRecursive() {
@@ -73,7 +58,7 @@ public class BSTree {
     }
 
     private TreeNode findMin(TreeNode rootTreeNode) {
-        if(rootTreeNode.left==null){
+        if (rootTreeNode.left == null) {
             return rootTreeNode;
         }
         return findMin(rootTreeNode.left);
@@ -81,11 +66,11 @@ public class BSTree {
 
     public TreeNode findMinimumIterative() {
         TreeNode tempNode = rootTreeNode;
-        if(tempNode==null){
+        if (tempNode == null) {
             return null;
         }
-        while(tempNode.left!=null){
-            tempNode=tempNode.left;
+        while (tempNode.left != null) {
+            tempNode = tempNode.left;
         }
         return tempNode;
     }
@@ -95,7 +80,7 @@ public class BSTree {
     }
 
     private TreeNode findMax(TreeNode rootTreeNode) {
-        if(rootTreeNode.right==null){
+        if (rootTreeNode.right == null) {
             return rootTreeNode;
         }
         return findMax(rootTreeNode.right);
@@ -104,26 +89,27 @@ public class BSTree {
     public TreeNode findMaximumIterative() {
 
         TreeNode tempNode = rootTreeNode;
-        if(tempNode==null){
+        if (tempNode == null) {
             return null;
         }
-        while(tempNode.right!=null){
-            tempNode=tempNode.right;
+        while (tempNode.right != null) {
+            tempNode = tempNode.right;
         }
         return tempNode;
     }
 
     public int findHeight() {
-       return height(rootTreeNode);
+        return height(rootTreeNode);
     }
 
+    //Find height of left subtree, right sub tree. Take max of it and add 1(because height of leaf node is zero);
     private int height(TreeNode rootTreeNode) {
-        if(rootTreeNode==null){
+        if (rootTreeNode == null) {
             return -1;
         }
-        int leftHeight=height(rootTreeNode.left);
-        int rightHeight=height(rootTreeNode.right);
-        return Math.max(leftHeight,rightHeight)+1;
+        int leftHeight = height(rootTreeNode.left);
+        int rightHeight = height(rootTreeNode.right);
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
 
@@ -145,22 +131,34 @@ class BSTreeMain {
         bsTree.insert(60);
         bsTree.insert(80);
 
-        bsTree.inOrderTraversal();
 
-        System.out.println("Found : "+bsTree.search(50));
+        System.out.println("<========> Search <========>");
+        System.out.println("Found : " + bsTree.search(50));
+        System.out.println("");
 
+        System.out.println("<========> Min value using recursion <========>");
         //Recursive min
-        System.out.println("Minimum value in tree using recursion: "+bsTree.findMinimumRecursive());
+        System.out.println("Minimum value in tree using recursion: " + bsTree.findMinimumRecursive());
+        System.out.println("");
+
+        System.out.println("<========> Min value using iterative <========>");
         //Iterative min
-        System.out.println("Minimum value in tree using iterative: "+bsTree.findMinimumIterative());
+        System.out.println("Minimum value in tree using iterative: " + bsTree.findMinimumIterative());
+        System.out.println("");
 
-        //Recursive min
-        System.out.println("Maximum value in tree using recursion: "+bsTree.findMaximumRecursive());
-        //Iterative min
-        System.out.println("Maximum value in tree using iterative: "+bsTree.findMaximumIterative());
+        System.out.println("<========> Max value using recursion <========>");
+        //Recursive max
+        System.out.println("Maximum value in tree using recursion: " + bsTree.findMaximumRecursive());
+        System.out.println("");
 
-        System.out.println("Height of the tree: "+bsTree.findHeight());
+        System.out.println("<========> Max value using iterative <========>");
+        //Iterative max
+        System.out.println("Maximum value in tree using iterative: " + bsTree.findMaximumIterative());
+        System.out.println("");
 
+        System.out.println("<========> Height <========>");
+        System.out.println("Height of the tree: " + bsTree.findHeight());
+        System.out.println("");
 
 
     }
