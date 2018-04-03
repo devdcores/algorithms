@@ -83,6 +83,10 @@ public class BinaryTreeTraversalsMain {
         binaryTreeTraversals.levelOrderTraversal();
         System.out.println("");
 
+        System.out.println("<========> Level Order Traversal in Reverse <========>");
+        binaryTreeTraversals.levelOrderTraversalInReverse();
+        System.out.println("");
+
     }
 }
 
@@ -217,5 +221,34 @@ class BinaryTreeTraversals {
 
     }
 
+    /*
+    * output should be 4 5 6 7 3 2 1
+    * level by level reverse.
+    *
+    * */
+    public void levelOrderTraversalInReverse() {
+        Stack<TreeNode> stack = new Stack<>();
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        if (rootTreeNode != null) {
+            queue.add(rootTreeNode);
+        }
+        while (!queue.isEmpty()) {
+            TreeNode polledTreeNode = queue.poll();
+            if (polledTreeNode != null) {
+                if (polledTreeNode.right != null) {
+                    queue.add(polledTreeNode.right);
+                }
+
+                if (polledTreeNode.left != null) {
+                    queue.add(polledTreeNode.left);
+                }
+                stack.push(polledTreeNode);
+            }
+        }
+        while (!stack.empty()) {
+            System.out.print(stack.pop().data+", ");
+        }
+
+    }
 }
 
